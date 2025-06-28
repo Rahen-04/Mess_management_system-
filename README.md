@@ -1,6 +1,6 @@
 # Mess_management_system-
 {**mandatory:
-to run : - // create the users table in itworkshop database in pgadmin  before runing the login.js file //
+to run : - // create the users table in itworkshop database in pgadmin  before runing the login.js file and make sure of required node modules//
 }
 
 
