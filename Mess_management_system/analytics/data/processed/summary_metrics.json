@@ -1,0 +1,72 @@
+{
+    "total_registered_students": 500,
+    "total_days_analyzed": 180,
+    "total_meals_served": 195818,
+    "avg_daily_attendance": 1087.9,
+    "total_food_waste_kg": 10320.1,
+    "total_financial_loss_inr": 841656.75,
+    "projected_savings_inr": 506514.75,
+    "pct_waste_reduction": 60.2,
+    "total_complaints": 562,
+    "avg_student_rating": 1.74,
+    "sla_resolved_pct": 77.8,
+    "top_waste_categories": {
+        "North Indian": {
+            "food_wasted_kg": 4249.35,
+            "financial_loss_inr": 363118.5
+        },
+        "South Indian": {
+            "food_wasted_kg": 1967.45,
+            "financial_loss_inr": 142443.0
+        },
+        "Light Dinner": {
+            "food_wasted_kg": 1650.5,
+            "financial_loss_inr": 105348.75
+        },
+        "Special Lunch": {
+            "food_wasted_kg": 722.0,
+            "financial_loss_inr": 73644.0
+        },
+        "Weekend Treat": {
+            "food_wasted_kg": 367.0,
+            "financial_loss_inr": 35782.5
+        }
+    },
+    "day_of_week_attendance": {
+        "Monday": {
+            "Breakfast": 290.7692307692308,
+            "Lunch": 379.38461538461536,
+            "Dinner": 394.0769230769231
+        },
+        "Tuesday": {
+            "Breakfast": 292.7307692307692,
+            "Lunch": 381.61538461538464,
+            "Dinner": 432.11538461538464
+        },
+        "Wednesday": {
+            "Breakfast": 299.72,
+            "Lunch": 408.2,
+            "Dinner": 459.48
+        },
+        "Thursday": {
+            "Breakfast": 333.68,
+            "Lunch": 391.24,
+            "Dinner": 403.0
+        },
+        "Friday": {
+            "Breakfast": 293.34615384615387,
+            "Lunch": 381.0769230769231,
+            "Dinner": 430.61538461538464
+        },
+        "Saturday": {
+            "Breakfast": 216.1153846153846,
+            "Lunch": 360.61538461538464,
+            "Dinner": 459.5769230769231
+        },
+        "Sunday": {
+            "Breakfast": 214.92307692307693,
+            "Lunch": 329.53846153846155,
+            "Dinner": 467.9230769230769
+        }
+    }
+}

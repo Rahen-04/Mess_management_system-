@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Operations & Demand Analytics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+    <!-- Top Navigation Header -->
+    <header class="border-b border-slate-800 bg-slate-950/70 backdrop-blur sticky top-0 z-50 px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-emerald-400 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20">
+                📊
+            </div>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    Mess Operations & Demand Analytics
+                    <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-medium">Live Analytics</span>
+                </h1>
+                <p class="text-xs text-slate-400">Executive Decision Support & Food Waste Optimization (180 Days Audited)</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 text-xs">
+            <span class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700">Period: Sept 2023 – Feb 2024</span>
+            <span class="bg-indigo-600/20 text-indigo-300 px-3 py-1.5 rounded-lg border border-indigo-500/30">Total Diners: 500 Students</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        <!-- KPI Metrics Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <!-- KPI 1 -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5 shadow-sm hover:border-slate-600 transition">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Meals Served</span>
+                <div class="text-2xl font-extrabold text-white mt-1">195,818</div>
+                <div class="text-xs text-emerald-400 mt-2 flex items-center gap-1">
+                    <span>↑ 1,087 / day avg</span>
+                </div>
+            </div>
+            <!-- KPI 2 -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5 shadow-sm hover:border-slate-600 transition">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Food Wasted</span>
+                <div class="text-2xl font-extrabold text-amber-400 mt-1">10,320 kg</div>
+                <div class="text-xs text-slate-400 mt-2">~19.1 kg / meal session</div>
+            </div>
+            <!-- KPI 3 -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5 shadow-sm hover:border-slate-600 transition">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Financial Loss (Raw Cost)</span>
+                <div class="text-2xl font-extrabold text-rose-400 mt-1">₹8,41,657</div>
+                <div class="text-xs text-rose-300 mt-2">Cumulative 6-month loss</div>
+            </div>
+            <!-- KPI 4 -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5 shadow-sm hover:border-slate-600 transition">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Projected Savings</span>
+                <div class="text-2xl font-extrabold text-emerald-400 mt-1">₹5,06,515</div>
+                <div class="text-xs text-emerald-300 mt-2">60.2% loss reduction</div>
+            </div>
+            <!-- KPI 5 -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5 shadow-sm hover:border-slate-600 transition">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Complaint SLA Rate</span>
+                <div class="text-2xl font-extrabold text-indigo-400 mt-1">77.8%</div>
+                <div class="text-xs text-slate-400 mt-2">Resolved within 24 hours</div>
+            </div>
+        </div>
+
+        <!-- Section 1: Main Trend Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- 7-Day Moving Average Footfall -->
+            <div class="lg:col-span-2 bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white">Daily Attendance & 7-Day Moving Average</h2>
+                        <p class="text-xs text-slate-400">Demonstrating demand smoothing and exam season dip patterns</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="text-xs bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-md font-medium border border-amber-500/30">Breakfast</span>
+                        <span class="text-xs bg-blue-500/20 text-blue-300 px-2.5 py-1 rounded-md font-medium border border-blue-500/30">Lunch</span>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md font-medium border border-emerald-500/30">Dinner</span>
+                    </div>
+                </div>
+                <div class="h-72">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Day of Week Footfall Heat/Bar -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 shadow-sm">
+                <h2 class="text-base font-bold text-white mb-1">Average Footfall by Day</h2>
+                <p class="text-xs text-slate-400 mb-4">Weekend drop-offs vs Sunday Biryani spike</p>
+                <div class="h-72">
+                    <canvas id="dayOfWeekChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Waste Breakdown & Complaint Sentiment -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Food Waste and Financial Loss by Menu Category -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white">Food Waste & Financial Loss by Cuisine</h2>
+                        <p class="text-xs text-slate-400">Categories driving the highest raw ingredient costs</p>
+                    </div>
+                </div>
+                <div class="h-72">
+                    <canvas id="wasteChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Student Feedback & SLA Compliance -->
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white">Student Complaints & Feedback Breakdown</h2>
+                        <p class="text-xs text-slate-400">Category frequency and SLA turnaround auditing</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 h-72 items-center">
+                    <div class="h-60">
+                        <canvas id="complaintPieChart"></canvas>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/50">
+                            <span class="text-slate-400 block">Top Complaint Driver</span>
+                            <span class="text-sm font-bold text-amber-400">Food Quality & Oiliness (35.2%)</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/50">
+                            <span class="text-slate-400 block">Longest SLA Turnaround</span>
+                            <span class="text-sm font-bold text-rose-400">Hygiene & Cleanliness (28.4 hrs)</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/50">
+                            <span class="text-slate-400 block">Average Student Rating</span>
+                            <span class="text-sm font-bold text-emerald-400">2.1 / 5.0 (Dissatisfied)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Executive Recommendations & Actionable Insights -->
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-2xl p-6 shadow-lg">
+            <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                💡 Key Analytical Insights & Strategic Recommendations
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 text-xs">
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <h3 class="font-bold text-indigo-400 text-sm mb-1">1. Dynamic Buffer Cooking</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Transition from static 12% excess buffer to dynamic 4% safety margin using 7-day rolling forecasts. Estimated net savings: <strong class="text-emerald-400">₹9.85 Lakhs / semester</strong>.
+                    </p>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <h3 class="font-bold text-amber-400 text-sm mb-1">2. Weekend Prep Downscaling</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Breakfast footfall drops by <strong class="text-amber-300">38% on Saturdays and Sundays</strong>. Reducing morning procurement automatically on weekends eliminates ~45 kg of wasted food weekly.
+                    </p>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <h3 class="font-bold text-emerald-400 text-sm mb-1">3. Counter Staff Staggering</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Queue congestion peaks between <strong class="text-emerald-300">13:00–13:35 and 20:15–20:45</strong>. Opening a 2nd verification counter during these windows cuts average wait time from 9.4 min to under 3.5 min.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Chart 1: Moving Average Trend
+        const ctxTrend = document.getElementById('trendChart').getContext('2d');
+        const labels = ['Week 1', 'Week 3', 'Week 5', 'Mid-Sem', 'Week 9', 'Diwali', 'End-Sem', 'Week 15', 'Week 18', 'Week 21', 'Week 24'];
+        new Chart(ctxTrend, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Breakfast (Avg ~305)',
+                        data: [315, 308, 312, 245, 305, 110, 235, 318, 302, 310, 314],
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.05)',
+                        tension: 0.35,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Lunch (Avg ~390)',
+                        data: [395, 388, 392, 360, 385, 135, 355, 394, 388, 390, 392],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        tension: 0.35,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Dinner (Avg ~442)',
+                        data: [445, 438, 442, 458, 435, 150, 462, 448, 440, 445, 448],
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                        tension: 0.35,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#94a3b8', font: { size: 11 } } }
+                },
+                scales: {
+                    x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+                    y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // Chart 2: Day of Week Footfall
+        const ctxDay = document.getElementById('dayOfWeekChart').getContext('2d');
+        new Chart(ctxDay, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [
+                    { label: 'Breakfast', data: [320, 318, 315, 322, 310, 205, 215], backgroundColor: '#f59e0b' },
+                    { label: 'Lunch', data: [405, 402, 398, 400, 390, 340, 345], backgroundColor: '#3b82f6' },
+                    { label: 'Dinner', data: [440, 438, 442, 445, 430, 410, 480], backgroundColor: '#10b981' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#94a3b8', font: { size: 10 } } }
+                },
+                scales: {
+                    x: { stacked: false, grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+                    y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // Chart 3: Waste by Category
+        const ctxWaste = document.getElementById('wasteChart').getContext('2d');
+        new Chart(ctxWaste, {
+            type: 'bar',
+            data: {
+                labels: ['North Indian Deluxe', 'Feast Dinner', 'Special Lunch', 'South Indian', 'Biryani Special', 'Light Dinner'],
+                datasets: [
+                    { label: 'Food Waste (kg)', data: [3420, 2850, 2640, 2180, 1650, 1120], backgroundColor: '#6366f1' },
+                    { label: 'Loss (₹ in 100s)', data: [3120, 2580, 2350, 1840, 1480, 920], backgroundColor: '#ef4444' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#94a3b8', font: { size: 11 } } }
+                },
+                scales: {
+                    x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                    y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // Chart 4: Complaint Distribution
+        const ctxPie = document.getElementById('complaintPieChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'doughnut',
+            data: {
+                labels: ['Food Quality', 'Hygiene', 'Shortage', 'Queues', 'Staff'],
+                datasets: [{
+                    data: [35, 25, 15, 15, 10],
+                    backgroundColor: ['#f59e0b', '#ef4444', '#3b82f6', '#8b5cf6', '#64748b'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 9 }, boxWidth: 10 } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

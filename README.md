@@ -7,7 +7,25 @@ to run : - // create the users table in itworkshop database in pgadmin  before r
 
 
 Introduction:
- 					This project is a web-based College Mess Management System developed with the aim of reducing food wastage and improving efficiency. The system enables only authorized personnel such as the admin and mess secretary to register users. Each user is uniquely identified by their roll number and is associated with a QR code which is scanned during meals
+This project is a web-based College Mess Management System developed with the aim of reducing food wastage and improving efficiency. The system enables authorized personnel to manage student check-ins via QR codes, log meal attendance, and handle feedback.
+
+---
+
+## 📊 Operations & Food Demand Analytics Suite
+> An executive operational analytics and demand forecasting suite auditing **180 days across 500 students (~195,818 individual meal check-in events)**.
+
+* 📑 **[Executive Case Study & Report](./Mess_management_system/analytics/CASE_STUDY.md)**
+* 🗄️ **[PostgreSQL Schema & Advanced Queries (CTEs, Window Functions)](./Mess_management_system/analytics/sql/queries.sql)**
+* 🐍 **[Python Exploratory Data Analysis & Visualizations](./Mess_management_system/analytics/scripts/eda_analysis.py)**
+* 🖥️ **[Interactive Executive Dashboard (Chart.js + Tailwind)](./Mess_management_system/analytics/dashboard/index.html)**
+* 📊 **[Power BI / Excel Ready Dataset](./Mess_management_system/analytics/data/processed/mess_operations_dataset.xlsx)**
+
+### 💡 Headline Analytical Findings:
+* **Footfall Volatility:** Discovered a **31.7% attendance collapse** during weekend breakfasts, causing ~45 kg of wasted morning food weekly under static cooking.
+* **Sunday Peak:** Sunday dinner reaches **93.6% dining capacity (468 students)** for the weekly feast menu.
+* **Financial Optimization:** Modeling dynamic 4% safety buffers based on 7-day rolling forecasts reduces plate waste by **60.2%**, saving an estimated **₹5,06,515 per semester**.
+
+---
  
 1.	Technologies Used-
 Backend: Node.js with PostgreSQL (pgadmin for management)
